@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<!--
+     #
+     # Licensed to the Apache Software Foundation (ASF) under one
+     # or more contributor license agreements.  See the NOTICE file
+     # distributed with this work for additional information
+     # regarding copyright ownership.  The ASF licenses this file
+     # to you under the Apache License, Version 2.0 (the
+     # "License"); you may not use this file except in compliance
+     # with the License.  You may obtain a copy of the License at
+     #
+     # http://www.apache.org/licenses/LICENSE-2.0
+     #
+     # Unless required by applicable law or agreed to in writing,
+     # software distributed under the License is distributed on an
+     # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     #  KIND, either express or implied.  See the License for the
+     # specific language governing permissions and limitations
+     # under the License.
+     #
+     -->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name = "format-detection" content = "telephone=no"/>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
+		<title>MMS</title>
+        <script type="text/javascript" src="../cordova-2.2.0.js"></script>
+		<script data-main ="../js/lib/mms.js" src="../js/lib/require.js"></script>
+		<script type="text/javascript" src="../js/lib/mms.js"></script>
+		<script type="text/javascript" src="../js/lib/jquery-1.8.0.js"></script>
+		<script type="text/javascript" src="../js/lib/jquery.json-2.3.1.js"></script>
+		
+		<link rel="stylesheet" href="../css/main.css" />
+        
+        <script type="text/javascript" language="javascript">
+            var imageobject = [];
+            function getPhotoDisplayPicture(source) {
+                navigator.camera.getPicture(onSuccessShowImage, onFail, {
+                                            quality : 50,
+                                            allowEdit: true,
+                                            destinationType : Camera.DestinationType.DATA_URL,
+                                             sourceType : source
+                                            }); 
+                
+            };
+            
+            function onSuccessShowImage(imageObject) {
+                imageurl = "data:image/jpeg;base64," + imageObject;
+                loadimages (imageurl,imageObject);  
+            }
+
+            function onFail(message) {
+                alert('fail');
+                alert(message);
+                consol.log('Failed because: ' + message);
+            }
+            function loadimages(imageURI,imageObject){                
+                imageobject.push(imageObject);
+                document.getElementById("images").innerHTML +="<img src ='" + imageURI + "' height = '65' width = '65' style = 'margin-left:10px;border:1px solid black'/>";
+            }
+
+            function sendMms() {
+                console.log('sendMMS button clicked');
+                var AddString = null;
+                var testTelNumber='6504549816';
+                var addArr;
+                var textffield = document.getElementById("number");
+                var textSubjectfield = document.getElementById("subject");
+                
+                var subject = $("#subject").val();
+                if(subject.length===0){
+                    subject='TestATTMmsApi';
+                    textSubjectfield.value=subject;
+                }
+                if (textffield.value.length > 0) {
+                    var msisdn1 = $("#number").val();
+                    addArr = (msisdn1.split(","));
+                    for ( i = 0; i < addArr.length; i = i + 1) {
+                        if (AddString === null) {
+                            AddString = 'tel:' + addArr[i];
+                        } else {
+                            AddString = AddString + ',' + 'tel:' + addArr[i]
+                        }
+                    }
+                } else {
+                    AddString='tel:'+ testTelNumber;
+                    textffield.value = testTelNumber;
+                    
+                }
+                
+                ATT.sendmms(AddString, subject,openDialog,imageobject);
+                
+                
+            }
+            
+            function getMmsStatus() {
+                console.log('Get MMS Delivery Status button clicked');
+                var messageId = JSON.parse(window.localStorage.messageId);
+                ATT.getMmsDeliveryStatus(messageId, openDialog);
+            }
+            
+            function openDialog(responseText, mmsId) {
+                window.location.href = "popup.html?title=Response" + "&prevPage=mms";
+                window.localStorage.response = JSON.stringify(responseText);
+                
+                if (mmsId != "" && mmsId != undefined) {
+                    messageId = mmsId;
+                    window.localStorage.messageId = JSON.stringify(messageId);
+                }
+                
+            }
+            
+            </script>
+	</head>
+	<body>
+		<div class="header">
+			<span class="backbutton"><span class="innerText" onclick="document.location.href='../index.html'">Back</span></span>
+			<span class="headerTitle" style="margin-left:20%;">MMS</span>
+		</div>
+		<div class="body" align="center">
+			<table class="table">
+				<tr class="trow">
+					<td class="tcol">
+                        <input class="inputnormal" placeholder="Enter phone number(s)" autofocus="autofocus" type="text" id="number">
+                        </input></td>
+				</tr>
+				<tr class="trow">
+					<td class="tcol">
+                        <input class="inputnormal" placeholder="Enter subject here" type="text" id="subject">
+                        </input></td>
+				</tr>
+				<tr class="trow" >
+                    <td>
+                        <div id = "images"></div>
+                    </td>
+                </tr>
+                <tr class="trow">
+                    <td class="tcol">
+                        <button type="button" class="submit" onclick="getPhotoDisplayPicture(navigator.camera.PictureSourceType.SAVEDPHOTOALBUM);">
+                            MMS attachment
+                        </button></td>
+				</tr>
+				<tr class="trow">
+					<td class="tcol"><button type="button" class="submit" onclick="sendMms();">Send MMS</button></td>
+                </tr>
+                <tr class="trow">
+                    <td class="tcol"><button type="button" class="submit" onclick="getMmsStatus();">GetMMSDeliveryStatus</button></td>
+                </tr>
+                
+            </table>
+        </div>
+    </body>
+</html>

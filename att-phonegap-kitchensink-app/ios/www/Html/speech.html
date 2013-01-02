@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<!--
+     #
+     # Licensed to the Apache Software Foundation (ASF) under one
+     # or more contributor license agreements.  See the NOTICE file
+     # distributed with this work for additional information
+     # regarding copyright ownership.  The ASF licenses this file
+     # to you under the Apache License, Version 2.0 (the
+     # "License"); you may not use this file except in compliance
+     # with the License.  You may obtain a copy of the License at
+     #
+     # http://www.apache.org/licenses/LICENSE-2.0
+     #
+     # Unless required by applicable law or agreed to in writing,
+     # software distributed under the License is distributed on an
+     # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     #  KIND, either express or implied.  See the License for the
+     # specific language governing permissions and limitations
+     # under the License.
+     #
+     -->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name = "format-detection" content = "telephone=no"/>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
+		<title>Speech</title>
+		<script data-main ="../js/lib/speech.js" src="../js/lib/require.js"></script>
+        <script type="text/javascript" src="../cordova-2.2.0.js"></script>
+		<script type="text/javascript" src="../js/lib/speech.js"></script>
+		<script type="text/javascript" src="../js/lib/jquery-1.8.0.js"></script>
+		<script type="text/javascript" src="../js/lib/jquery.json-2.3.1.js"></script>
+        <script type="text/javascript" charset="utf-8" src="../js/lib/filebrowse.js"></script>
+		<link rel="stylesheet" href="../css/main.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        
+        
+		<script type="text/javascript" language="javascript">
+            
+            var fs,filePath,fname = "recordedAudio.wav";
+            var fileSelected,mediaRec=null, recInterval,recordSettings = {"FormatID": "kAudioFormatLinearPCM","SampleRate": 8000.0,"NumberOfChannels": 1,"LinearPCMBitDepth": 16};
+            
+            function recfile1() {recordAudio(fname);}
+            function success(){console.log("ok");}
+            function recordAudio(fname) {
+                fs.root.getFile(fname, {create: true, exclusive: false}, function(entry){
+                                filePath = entry.fullPath;
+                                mediaRec = new Media(entry.fullPath, success, function(){console.log("failed");});
+                                mediaRec.startRecordWithSettings(recordSettings);
+                                }, function(){console.log("error");});
+            }
+            
+            function onBodyLoad(){
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){fs=fileSystem;}, function(){console.log("failed");});
+                Media.prototype.startRecordWithSettings = function(options) {
+                    
+                    
+                    Cordova.exec(null, null, "AudioRecord","startAudioRecord", [this.id, this.src, options]);
+                };
+                Media.prototype.stopRecordWithSettings = function() {
+                    Cordova.exec(null, null, "AudioRecord","stopAudioRecord", [this.id, this.src]);
+                };
+            }
+            function startRecording(){
+                fname = "recordedAudio.wav";
+                recfile1();
+                $('#record').text('Recording.....').button("refresh");
+                
+            }
+            function stopRecording(){
+                mediaRec.stopRecordWithSettings();
+                $('#record').text('Start Recording').button("refresh");
+            }
+            function playRecording(){
+                var my_media;
+                fs.root.getFile(fname, {create: false, exclusive: false},
+                                function success(entry) {
+                                my_media = new Media(entry.fullPath,function(){console.log("ok");},function(err){console.log(err.code+" "+err.message);});
+                                my_media.play();
+                                },
+                                function() {
+                                console.log("not found file");
+                                }
+                                );
+            }
+            
+            function initialize(){
+                var url=document.location.href;
+                var vars = [], hash;
+                var hashes = url.slice(url.indexOf('?') + 1).split('&');
+                for (var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                filePath=URLDecode(vars["speechFilePath"]);
+                fileSelected= URLDecode(vars["fileSelected"]);
+                if(vars["fileSelected"]!= null)
+                {
+                    document.getElementById('fileSelected').innerHTML = '';
+                    document.getElementById('fileSelected').innerHTML = 'Selected File : ' +  fileSelected ;
+                    fname = fileSelected;
+                    
+                }
+                Show("speech","filebrowser");
+                onBodyLoad();
+            }
+            
+            function URLDecode(psEncodeString)
+            {
+                // Create a regular expression to search all +s in the string
+                var lsRegExp = /\+/g;
+                // Return the decoded string
+                return unescape(String(psEncodeString).replace(lsRegExp, " "));
+            }
+            
+            function openDialogForFile(page) {
+				window.location.href = ""+page+""+"?prevPage=speech";
+			}
+            
+            function getFile() {
+                Show("filebrowser","speech");
+                readFileSystem();
+                //openDialogForFile('filebrowse.html');
+            }
+            function backNav(){
+                Show("speech","filebrowser");
+            }
+            function Show(visible,hidden)
+            {
+                var div = document.getElementById(visible);
+                var div1 = document.getElementById(hidden);
+                
+                div.style.display = "block";
+                div1.style.display = "none";
+                
+            }
+            
+			function speech() {
+                console.log('Speech Button Clicked');
+                
+                ATT.speech(filePath,openDialog);
+                
+			}
+            function textforshortcode()
+            {
+                $("#header").css("header");
+            }
+            
+			function openDialog(responseText) {
+            	window.localStorage.response = JSON.stringify(responseText);
+                window.location.href = "popup.html?title=Response" + "&prevPage=speech";
+            }
+            </script>
+	</head>
+	<body onload = "initialize()">
+        <div id="speech">
+            
+            <div class="header">
+                <span class="backbutton"><span class="innerText" onclick="document.location.href='../index.html'">Back</span></span>
+                <span class="headerTitle" style="margin-left:20%;">Speech</span>
+            </div>
+            <div class="body" align="center">
+              <!--  <span id="selectedFile">
+                    <p id="fileSelected">Please Select File</p>
+                </span> -->
+                <table class="table">
+                    <tr class="trow">
+                        
+                        <td class="tcol"><button type="button" class="submitlarge" id="record" onclick="startRecording();" style="margin-left:10px;">Start Recording</button></td>
+                    </tr>
+                    <tr class="trow">
+                        
+                        <td class="tcol"><button type="button" class="submitlarge" onclick="stopRecording();" style="margin-left:10px;">Stop Recording</button></td>
+                    </tr>
+                    <tr class="trow">
+                        
+                        <td class="tcol"><button type="button" class="submitlarge" onclick="playRecording();" style="margin-left:10px;">Play Audio</button></td>
+                    </tr>
+                    <!-- If you want to choose file. Please un-comment below code and run the application again.-->
+                   <!-- <tr class="trow">
+                        
+                        <td class="tcol"><button type="button" class="submitlarge" onclick="getFile();" style="margin-left:10px;">Choose File</button></td>
+                    </tr> -->
+                    <tr class="trow">
+                        
+                        <td class="tcol">
+                            <button type="button" class="submitlarge" onclick="speech()" style="margin-left:10px;">
+                                Speech
+                            </button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div id="filebrowser">
+            <div class="header">
+                <span class="backbutton"><span class="innerText" onclick="backNav();">Back</span></span>
+                <span class="headerTitle" style="margin-left:100px;">File Explorer</span>
+            </div>
+            <div class="body" align="center">
+                <div id="dirContent">
+                    
+                </div>
+                <!--   <a id="menu" href="#menuOptions" data-rel="dialog">file details</a>-->
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
