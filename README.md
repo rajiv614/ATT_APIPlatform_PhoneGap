@@ -13,12 +13,15 @@ AT&T platform APIs:
 • SMS
 • MMS
 • WAP-PUSH
-• SPEECH
+• SPEECH TO TEXT
 • IN-APP MESSAGING
 • NOTARY
 • PAYMENT
 • LOCATION
 • OAUTH
+• TEXT TO SPEECH
+• ADS
+
 
 ==========================================================
 How to Run KitchenSink App on iOS

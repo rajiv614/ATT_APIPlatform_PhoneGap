@@ -1,4 +1,4 @@
-﻿========================================================
+========================================================
 PhoneGap Plugins for AT&T API Platform
 ========================================================
 PhoneGap Plugins for AT&T API Platform provide a simplified way for PhoneGap
@@ -13,19 +13,21 @@ AT&T platform APIs:
 • SMS
 • MMS
 • WAP-PUSH
-• SPEECH
+• SPEECH TO TEXT
 • IN-APP MESSAGING
 • NOTARY
 • PAYMENT
 • LOCATION
 • OAUTH
+• TEXT TO SPEECH
+• ADS
 
 ============Tested versions===============
 Eclipse: Indigo, Juno
-PhoneGap: 2.2.0
-Xcode 4.5
+PhoneGap: 2.5.0
+Xcode 4.6.1
 Android SDK 20.0.3, 21.0.0
-iOS Simulator: iOS 5.1 , iOS 6.0 for both iPhone and iPad Simulators
+iOS Simulator: iOS 5.1 , iOS 6.1 for both iPhone and iPad Simulators
 Android Emulator: 2.2 HVGA, 4.0.3 Galaxy Nexus, 4.1.2 Nexus One
 
 

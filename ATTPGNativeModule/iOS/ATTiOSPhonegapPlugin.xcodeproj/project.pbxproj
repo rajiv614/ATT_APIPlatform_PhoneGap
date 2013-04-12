@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03216F9116368CA900077EBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03216F9016368CA900077EBB /* Foundation.framework */; };
+		03216F9616368CA900077EBB /* ATTiOSPhonegapPlugin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03216F9516368CA900077EBB /* ATTiOSPhonegapPlugin.h */; };
+		03216FC71636973C00077EBB /* InAppMessagePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 03216FC01636973C00077EBB /* InAppMessagePlugin.m */; };
+		03216FC81636973C00077EBB /* MMSPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 03216FC21636973C00077EBB /* MMSPlugin.m */; };
+		03216FC91636973C00077EBB /* SpeechPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 03216FC41636973C00077EBB /* SpeechPlugin.m */; };
+		03216FCA1636973C00077EBB /* WapPushPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 03216FC61636973C00077EBB /* WapPushPlugin.m */; };
+		03216FD11636981500077EBB /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 03216FCE1636981500077EBB /* NSData+Base64.m */; };
+		03216FD21636981500077EBB /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 03216FD01636981500077EBB /* NSString+Base64.m */; };
+		03216FF116369C1200077EBB /* ATTPluginHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03216FF016369C1200077EBB /* ATTPluginHTTPRequest.m */; };
+		03216FF51636B41600077EBB /* InAppMessagePlugin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03216FBF1636973C00077EBB /* InAppMessagePlugin.h */; };
+		03216FF61636B41600077EBB /* MMSPlugin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03216FC11636973C00077EBB /* MMSPlugin.h */; };
+		03216FF71636B41600077EBB /* SpeechPlugin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03216FC31636973C00077EBB /* SpeechPlugin.h */; };
+		03216FF81636B41600077EBB /* WapPushPlugin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03216FC51636973C00077EBB /* WapPushPlugin.h */; };
+		0346FCEF16563BAA00B8DD53 /* ATTPluginHTTPRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03216FEF16369C1200077EBB /* ATTPluginHTTPRequest.h */; };
+		43284E4D1706220400221065 /* TTSPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 43284E4C1706220400221065 /* TTSPlugin.m */; };
+		438F646217064F37005D6473 /* TTSPlugin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43284E4B1706220400221065 /* TTSPlugin.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		03216F8B16368CA800077EBB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				438F646217064F37005D6473 /* TTSPlugin.h in CopyFiles */,
+				0346FCEF16563BAA00B8DD53 /* ATTPluginHTTPRequest.h in CopyFiles */,
+				03216FF51636B41600077EBB /* InAppMessagePlugin.h in CopyFiles */,
+				03216FF61636B41600077EBB /* MMSPlugin.h in CopyFiles */,
+				03216FF71636B41600077EBB /* SpeechPlugin.h in CopyFiles */,
+				03216FF81636B41600077EBB /* WapPushPlugin.h in CopyFiles */,
+				03216F9616368CA900077EBB /* ATTiOSPhonegapPlugin.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		03216F8D16368CA800077EBB /* libATTiOSPhonegapPlugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libATTiOSPhonegapPlugin.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		03216F9016368CA900077EBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		03216F9416368CA900077EBB /* ATTiOSPhonegapPlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ATTiOSPhonegapPlugin-Prefix.pch"; sourceTree = "<group>"; };
+		03216F9516368CA900077EBB /* ATTiOSPhonegapPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTiOSPhonegapPlugin.h; sourceTree = "<group>"; };
+		03216FBA1636952D00077EBB /* ATTPluginContant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTPluginContant.h; sourceTree = "<group>"; };
+		03216FBF1636973C00077EBB /* InAppMessagePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppMessagePlugin.h; sourceTree = "<group>"; };
+		03216FC01636973C00077EBB /* InAppMessagePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppMessagePlugin.m; sourceTree = "<group>"; };
+		03216FC11636973C00077EBB /* MMSPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSPlugin.h; sourceTree = "<group>"; };
+		03216FC21636973C00077EBB /* MMSPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSPlugin.m; sourceTree = "<group>"; };
+		03216FC31636973C00077EBB /* SpeechPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechPlugin.h; sourceTree = "<group>"; };
+		03216FC41636973C00077EBB /* SpeechPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechPlugin.m; sourceTree = "<group>"; };
+		03216FC51636973C00077EBB /* WapPushPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WapPushPlugin.h; sourceTree = "<group>"; };
+		03216FC61636973C00077EBB /* WapPushPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WapPushPlugin.m; sourceTree = "<group>"; };
+		03216FCD1636981500077EBB /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		03216FCE1636981500077EBB /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		03216FCF1636981500077EBB /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		03216FD01636981500077EBB /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		03216FEC1636989100077EBB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		03216FED1636989100077EBB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		03216FEF16369C1200077EBB /* ATTPluginHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTPluginHTTPRequest.h; sourceTree = "<group>"; };
+		03216FF016369C1200077EBB /* ATTPluginHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTPluginHTTPRequest.m; sourceTree = "<group>"; };
+		43284E4B1706220400221065 /* TTSPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSPlugin.h; sourceTree = "<group>"; };
+		43284E4C1706220400221065 /* TTSPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSPlugin.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03216F8A16368CA800077EBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03216F9116368CA900077EBB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03216F8216368CA800077EBB = {
+			isa = PBXGroup;
+			children = (
+				03216F9216368CA900077EBB /* ATTiOSPhonegapPlugin */,
+				03216F8F16368CA900077EBB /* Frameworks */,
+				03216F8E16368CA900077EBB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		03216F8E16368CA900077EBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03216F8D16368CA800077EBB /* libATTiOSPhonegapPlugin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03216F8F16368CA900077EBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03216F9016368CA900077EBB /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		03216F9216368CA900077EBB /* ATTiOSPhonegapPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				03216FCB1636981500077EBB /* ATTFeatureSupport */,
+				03216FBE1636973C00077EBB /* ATTFeatures */,
+				03216F9516368CA900077EBB /* ATTiOSPhonegapPlugin.h */,
+				03216F9316368CA900077EBB /* Supporting Files */,
+			);
+			path = ATTiOSPhonegapPlugin;
+			sourceTree = "<group>";
+		};
+		03216F9316368CA900077EBB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				03216FBA1636952D00077EBB /* ATTPluginContant.h */,
+				03216F9416368CA900077EBB /* ATTiOSPhonegapPlugin-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03216FBE1636973C00077EBB /* ATTFeatures */ = {
+			isa = PBXGroup;
+			children = (
+				43284E4B1706220400221065 /* TTSPlugin.h */,
+				43284E4C1706220400221065 /* TTSPlugin.m */,
+				03216FBF1636973C00077EBB /* InAppMessagePlugin.h */,
+				03216FC01636973C00077EBB /* InAppMessagePlugin.m */,
+				03216FC11636973C00077EBB /* MMSPlugin.h */,
+				03216FC21636973C00077EBB /* MMSPlugin.m */,
+				03216FC31636973C00077EBB /* SpeechPlugin.h */,
+				03216FC41636973C00077EBB /* SpeechPlugin.m */,
+				03216FC51636973C00077EBB /* WapPushPlugin.h */,
+				03216FC61636973C00077EBB /* WapPushPlugin.m */,
+			);
+			path = ATTFeatures;
+			sourceTree = "<group>";
+		};
+		03216FCB1636981500077EBB /* ATTFeatureSupport */ = {
+			isa = PBXGroup;
+			children = (
+				03216FEB1636989100077EBB /* JSON */,
+				03216FCC1636981500077EBB /* Base64 */,
+				03216FEF16369C1200077EBB /* ATTPluginHTTPRequest.h */,
+				03216FF016369C1200077EBB /* ATTPluginHTTPRequest.m */,
+			);
+			path = ATTFeatureSupport;
+			sourceTree = "<group>";
+		};
+		03216FCC1636981500077EBB /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				03216FCD1636981500077EBB /* NSData+Base64.h */,
+				03216FCE1636981500077EBB /* NSData+Base64.m */,
+				03216FCF1636981500077EBB /* NSString+Base64.h */,
+				03216FD01636981500077EBB /* NSString+Base64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		03216FEB1636989100077EBB /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				03216FEC1636989100077EBB /* JSONKit.h */,
+				03216FED1636989100077EBB /* JSONKit.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03216F8C16368CA800077EBB /* ATTiOSPhonegapPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03216F9B16368CA900077EBB /* Build configuration list for PBXNativeTarget "ATTiOSPhonegapPlugin" */;
+			buildPhases = (
+				03216F8916368CA800077EBB /* Sources */,
+				03216F8A16368CA800077EBB /* Frameworks */,
+				03216F8B16368CA800077EBB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ATTiOSPhonegapPlugin;
+			productName = ATTiOSPhonegapPlugin;
+			productReference = 03216F8D16368CA800077EBB /* libATTiOSPhonegapPlugin.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03216F8416368CA800077EBB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Saurav Nagpal";
+			};
+			buildConfigurationList = 03216F8716368CA800077EBB /* Build configuration list for PBXProject "ATTiOSPhonegapPlugin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 03216F8216368CA800077EBB;
+			productRefGroup = 03216F8E16368CA900077EBB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03216F8C16368CA800077EBB /* ATTiOSPhonegapPlugin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03216F8916368CA800077EBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03216FC71636973C00077EBB /* InAppMessagePlugin.m in Sources */,
+				03216FC81636973C00077EBB /* MMSPlugin.m in Sources */,
+				03216FC91636973C00077EBB /* SpeechPlugin.m in Sources */,
+				03216FCA1636973C00077EBB /* WapPushPlugin.m in Sources */,
+				03216FD11636981500077EBB /* NSData+Base64.m in Sources */,
+				03216FD21636981500077EBB /* NSString+Base64.m in Sources */,
+				03216FF116369C1200077EBB /* ATTPluginHTTPRequest.m in Sources */,
+				43284E4D1706220400221065 /* TTSPlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		03216F9916368CA900077EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/output_library";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "i386 armv6 armv7";
+			};
+			name = Debug;
+		};
+		03216F9A16368CA900077EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/output_library";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "i386 armv6 armv7";
+			};
+			name = Release;
+		};
+		03216F9C16368CA900077EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					i386,
+					armv7s,
+				);
+				"ARCHS[sdk=iphoneos*]" = (
+					armv7,
+					armv7s,
+					i386,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = (
+					armv7,
+					i386,
+				);
+				DSTROOT = /tmp/ATTiOSPhonegapPlugin.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ATTiOSPhonegapPlugin/ATTiOSPhonegapPlugin-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
+			};
+			name = Debug;
+		};
+		03216F9D16368CA900077EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7s,
+					i386,
+				);
+				"ARCHS[sdk=iphoneos*]" = (
+					armv7,
+					armv7s,
+					i386,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = (
+					armv7,
+					i386,
+				);
+				DSTROOT = /tmp/ATTiOSPhonegapPlugin.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ATTiOSPhonegapPlugin/ATTiOSPhonegapPlugin-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03216F8716368CA800077EBB /* Build configuration list for PBXProject "ATTiOSPhonegapPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03216F9916368CA900077EBB /* Debug */,
+				03216F9A16368CA900077EBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03216F9B16368CA900077EBB /* Build configuration list for PBXNativeTarget "ATTiOSPhonegapPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03216F9C16368CA900077EBB /* Debug */,
+				03216F9D16368CA900077EBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03216F8416368CA800077EBB /* Project object */;
+}
