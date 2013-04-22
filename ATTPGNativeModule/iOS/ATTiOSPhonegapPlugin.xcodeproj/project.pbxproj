@@ -300,16 +300,15 @@
 					armv7,
 					i386,
 					armv7s,
+					armv6,
 				);
 				"ARCHS[sdk=iphoneos*]" = (
 					armv7,
 					armv7s,
 					i386,
+					armv6,
 				);
-				"ARCHS[sdk=iphonesimulator*]" = (
-					armv7,
-					i386,
-				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
 				DSTROOT = /tmp/ATTiOSPhonegapPlugin.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ATTiOSPhonegapPlugin/ATTiOSPhonegapPlugin-Prefix.pch";
@@ -318,7 +317,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "armv7 armv7s i386";
+				VALID_ARCHS = "armv7 armv7s i386 armv6";
 			};
 			name = Debug;
 		};
@@ -333,11 +332,9 @@
 					armv7,
 					armv7s,
 					i386,
+					armv6,
 				);
-				"ARCHS[sdk=iphonesimulator*]" = (
-					armv7,
-					i386,
-				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
 				DSTROOT = /tmp/ATTiOSPhonegapPlugin.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ATTiOSPhonegapPlugin/ATTiOSPhonegapPlugin-Prefix.pch";
@@ -346,7 +343,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "armv7 armv7s i386";
+				VALID_ARCHS = "armv7 armv7s i386 armv6";
 			};
 			name = Release;
 		};
