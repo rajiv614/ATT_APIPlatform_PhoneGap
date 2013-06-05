@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=320; user-scalable=no" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>Minimal AppLaud App</title>
+
+<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="attplugin.js"></script>
+<script type="text/javascript" charset="utf-8">
+	var onDeviceReady = function() {
+		document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
+		
+		
+//---------------------------------------- SPEECH TO TEXT------------------------------------------------------------------------------------------------------------
+	  /* 	var args = {
+			host : "https://api.att.com/rest/1/SpeechToText", // URL - Mandatory
+			filePath : "/mnt/sdcard/bostonSeltics.wav", // File Absolute Path - Mandatory
+			token : "Bearer 6115d8c6ad2e332bc70a95d00ed297bd", // Token - Mandatory
+			headerAccept : "application/json", // Accept header value - Mandatory
+			headerContentType : "audio/wav", // Content-Type header - Mandatory
+			headerContentLength: "10"
+		}; 
+		
+		 att.speechToText(args, function(status){alert(JSON.stringify(status));}); 
+		  
+		 
+		 */
+	
+//---------------------------------------- MMS-------------------------------------------------------------------------------------------------------------------------
+		    	var args = {
+			host : "https://api.att.com/rest/mms/2/messaging/outbox", // URL - Mandatory
+			
+			token : "Bearer 6115d8c6ad2e332bc70a95d00ed297bd", // Token - Mandatory
+			headerAccept : "application/json", // Accept header value - Mandatory
+			
+		 //	headerContentType : "application/x-www-form-urlencoded",
+		 //	headerContentType : "application/json",
+			headerContentType : "application/xml",
+	
+		//	body :"Address=tel%3A%2B13500000991&Priority=High&Subject=image%20file",
+		//	body : { "Address" : "tel:6504549816,tel:6503916200", "Subject" : "image file", "Priority" : "High" },
+			body : "<MmsRequest>"+"\n"+"<Address>tel:6508638281</Address>"+"\n"+"<Subject>phonegap test</Subject>"+"\n"+"<Priority>High</Priority>"+"\n"+"</MmsRequest>",
+			
+			 attachments:[
+				{"fileName": "Stonehenge.jpeg", "fileType": "image/jpeg", "filePath":"/mnt/sdcard/Stonehenge.jpeg","fileObject":""},
+	  		//	{"fileName": "hello.jpg", "type": "image/jpeg", "filePath":"","fileObject":imagepath},
+			]
+		
+		
+		};
+		
+		 att.sendMMS(args, function(status) {
+			alert(JSON.stringify(status));
+		});      
+		  
+		
+		
+		
+//---------------------------------------- MMS STATUS-------------------------------------------------------------------------------------------------------------------------		  
+		
+	 	/* var args = {
+		host : "https://api.att.com",
+		token : "Bearer 6115d8c6ad2e332bc70a95d00ed297bd",
+		headerAccept : "application/json", // Accept header value - Mandatory
+		headerContentType : "application/json",
+		mmsId : "MMSa9b458986f442627"
+		};
+		
+		 att.mmsstatus(args,function(status) {
+			alert(JSON.stringify(status));
+		}); 
+		 */
+		 
+		 
+		 
+		 
+//---------------------------------------- MOBO MMS-------------------------------------------------------------------------------------------------------------------------	
+	 
+     	/*    var args = {
+			host : "https://api.att.com/rest/1/MyMessages", // URL - Mandatory
+			
+			token : "Bearer 3c4a2583ea3abd176627fdadb669a9ba", // Token - Mandatory
+			headerAccept : "application/json", // Accept header value - Mandatory
+			
+		 //	headerContentType : "application/x-www-form-urlencoded",
+			headerContentType : "application/json",
+		 //	headerContentType : "application/xml",
+			
+			body : { "Addresses": ["madhur.kulshrestha@globallogic.com","madkul24@gmail.com","tel:6507842887"], "Text": "Hello world", "Subject": "Hi by madhur" },
+		 //	body : "<MessageRequest>"+"\n"+"<Addresses>tel:2087654321,madkul24@gmail.com,madhur.kulshrestha@globallogic.com</Addresses>"+"\n"+"<Subject>Hi</Subject>"+"\n"+"</MessageRequest>",
+		 //	body : "Addresses=tel%3A%2B2087654321&Addresses=tel%3A%2B2023456789&Addresses=madhur.kulshrestha@globallogic.com&Text=Hello&Subject=Hiz",
+		
+			attachments:[
+				{"fileName": "screen2.jpg", "fileType": "image/jpeg", "filePath":"/mnt/sdcard/screen2.jpg","fileObject":""}
+    		//	{"fileName": "hello2.amr", "fileType": "audio/amr", "filePath":"/mnt/sdcard/hello2.amr","fileObject":""},
+   			//	{"fileName": "hello.jpg", "fileType": "image/jpeg", "filePath":"","fileObject":imagepath}
+    		]
+			
+		};
+		
+		 att.sendMessage(args, function(status) {
+			alert(JSON.stringify(status));
+		});    
+		    */
+		
+//---------------------------------------- WAP PUSH -------------------------------------------------------------------------------------------------------------------------		
+		
+		
+	  /*   var xml = "";
+        xml += "Content-Disposition: form-data; name=\"PushContent\"\n";
+        xml += "Content-Type: text/vnd.wap.si\n";
+        xml += "Content-Length: 20\n";
+        xml += "X-Wap-Application-Id: x-wap-application:wml.ua\n\n";
+        xml += "<?xml version=\"1.0\"?>\n";
+        xml += "<!DOCTYPE si PUBLIC \"-//WAPFORUM//DTD SI 1.0//EN\" \"http://www.wapforum.org/DTD/si.dtd\">\n";
+        xml += "<si>";
+        xml += "<indication href=\"" + "https://api.att.com/" + "\" action=\"signal-medium\" si-id=\"6532\" >\n";
+        xml += "Phonegap Wap Push" + "\n";
+        xml += "</indication>\n";
+        xml += "</si>\n";
+		
+		var args = {
+			host : "https://api.att.com/1/messages/outbox/wapPush", // URL - Mandatory
+			token : "Bearer 6115d8c6ad2e332bc70a95d00ed297bd", // Token - Mandatory
+			//body : {"address":"tel:8588228604"},
+			//body:"<wapPushRequest>"+"\n"+"<address>tel:8588228604</address>"+"\n"+"</wapPushRequest>",//"tel:6505754427,tel:6505554489",
+			body : "address=tel%3A6508638216",
+			data : xml,
+			headerAccept : "application/json", // Accept header value - Mandatory
+			headerContentType : "application/x-www-form-urlencoded"
+			//	headerContentType : "application/json",
+			//	headerContentType : "application/xml",
+		};
+		
+		 att.sendWAPPush(args, function(status) {
+			alert(JSON.stringify(status));
+		});      */
+		 
+	
+};
+
+
+// ---------------------------------------- INIT FUNCTION --------------------------------------------------------------------
+
+	function init() {
+		document.addEventListener("deviceready", onDeviceReady, true);
+	}
+	
+	 var imagepath ;            
+            
+    function onPhotoURISuccess(imageURI) {
+        alert('onPhotoURISuccess');
+        
+        var largeImage = document.getElementById('largeImage');
+        imagepath = imageURI;
+        alert('imagepath : '+imagepath);
+                
+ //--------------------------------------------------------- MMS CODE FOR ATTACHMENT FROM IMAGE GALLERY-----------------------------------
+             
+         var args = {
+			host : "https://api.att.com", // URL - Mandatory
+			
+			token : "Bearer 6115d8c6ad2e332bc70a95d00ed297bd", // Token - Mandatory
+			headerAccept : "application/json", // Accept header value - Mandatory
+			
+		  //headerContentType : "application/x-www-form-urlencoded",
+		  //headerContentType : "application/json",
+			headerContentType : "application/xml",
+	
+		  //body :"Address=tel%3A%2B13500000991&Priority=High&Subject=image%20file",
+		  //body : { "Address" : "tel:6504549816,tel:6503916200", "Subject" : "image file", "Priority" : "High" },
+			body : "<MmsRequest>"+"\n"+"<Address>tel:6505754427</Address>"+"\n"+"<Subject>Madhur Test</Subject>"+"\n"+"<Priority>High</Priority>"+"\n"+"</MmsRequest>",
+			
+			 attachments:[
+				{"fileName": "screen2.jpg", "type": "image/jpeg", "filePath":imagepath,"fileObject":""},
+			//	{"fileName": "hello.jpg", "type": "image/jpeg", "filePath":"","fileObject":imagepath}
+			]
+			
+		
+		};
+		
+		 att.mms(args, function(status) {
+			alert(JSON.stringify(status));
+			alert('success');
+		});    
+          
+		 
+ //--------------------------------------------------------- MOBO CODE FOR ATTACHMENT FROM IMAGE GALLERY-----------------------------------	 
+		
+           
+	   /*  var args = {
+			host : "https://api.att.com", // URL - Mandatory
+			
+			token : "Bearer 3c4a2583ea3abd176627fdadb669a9ba", // Token - Mandatory
+			headerAccept : "application/json", // Accept header value - Mandatory
+			
+			//headerContentType : "application/x-www-form-urlencoded",
+		  headerContentType : "application/json",
+		  //headerContentType : "application/xml",
+			
+		  //address : ["madkul24@gmail.com","tel:6504384013"],//   6309700001 , 6506197754
+		  //address : "<Addresses>madkul24@gmail.com,tel:6504384013</Addresses>",
+		  //subject : "<Subject>Test Subject</Subject>",
+		  //text : "<Text>Sample text</Text>",
+		
+		  body : { "Addresses": ["madhur.kulshrestha@globallogic.com","madkul24@gmail.com","tel:6507842887"], "Text": "Hello world", "Subject": "Hi by madhur" },
+		  //body : "<MessageRequest>"+"\n"+"<Addresses>tel:6504835349,madkul24@gmail.com,madhur.kulshrestha@globallogic.com</Addresses>"+"\n"+"<Subject>Hi</Subject>"+"\n"+"</MessageRequest>",
+		//	body : "Addresses=tel%3A%2B2087654321&Addresses=tel%3A%2B2023456789&Addresses=madhur.kulshrestha@globallogic.com&Text=Hello&Subject=Hiz",
+		
+			attachments:[
+			 	{"fileName": "screen2.jpg", "type": "image/jpeg", "filePath":imagepath,"fileObject":""}
+	    	 //	{"fileName": "hello2.amr", "type": "audio/amr", "filePath":"/mnt/sdcard/hello2.amr","fileObject":""},
+	      	//	{"fileName": "hello.jpg", "type": "image/jpeg", "filePath":"","fileObject":imagepath}
+    		]
+			
+		}; 
+		
+		 att.mobomms(args, function(status) {
+			alert(JSON.stringify(status));
+		});	   */
+ //--------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+        };
+            
+        function getPhoto(source) {
+            alert('getPhoto');
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+                                        destinationType: navigator.camera.DestinationType.FILE_URI,
+                                   // 	destinationType: navigator.camera.DestinationType.DATA_URL,
+                                        sourceType: source });
+        }; 
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        };
+</script>
+
+</head>
+<body onload="init();" id="stage" class="theme">
+	<h2>Minimal AppLaud App</h2>
+	 <button onclick="getPhoto(navigator.camera.PictureSourceType.SAVEDPHOTOALBUM);">From Photo Album</button>  
+	<p>Your app goes here.</p>
+	<p>
+		<span id="devready">onDeviceReady not fired.</span>
+	</p>
+
+</body>
+</html>
