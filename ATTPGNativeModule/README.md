@@ -1,1 +1,0 @@
-Native plugin implementation for Android and IOS projects are available here.
