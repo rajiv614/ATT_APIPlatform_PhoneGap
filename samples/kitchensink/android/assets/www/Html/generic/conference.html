@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<!--
+	#
+	# Licensed to the Apache Software Foundation (ASF) under one
+	# or more contributor license agreements.  See the NOTICE file
+	# distributed with this work for additional information
+	# regarding copyright ownership.  The ASF licenses this file
+	# to you under the Apache License, Version 2.0 (the
+	# "License"); you may not use this file except in compliance
+	# with the License.  You may obtain a copy of the License at
+	#
+	# http://www.apache.org/licenses/LICENSE-2.0
+	#
+	# Unless required by applicable law or agreed to in writing,
+	# software distributed under the License is distributed on an
+	# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+	#  KIND, either express or implied.  See the License for the
+	# specific language governing permissions and limitations
+	# under the License.
+	#
+	-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+<title>Call Management</title>
+<script data-main="../../js/generic/speech.js" src="../../js/lib/require.js"></script>
+<script type="text/javascript" src="../../cordova.js"></script>
+<script type="text/javascript" src="../../js/generic/callmgmt.js"></script>
+<script type="text/javascript" src="../../js/generic/speech.js"></script>
+<script type="text/javascript" src="../../js/lib/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="../../js/lib/jquery.json-2.3.1.js"></script>
+
+
+<link rel="stylesheet" href="../../css/main.css" />
+
+<script type="text/javascript" language="javascript">
+	
+	var addArr;
+	var masterArray = [];
+
+	function launchContactList(paramFeature){
+		
+		feature = paramFeature;
+		var myJsonObj;
+		$.getJSON('http://dl.dropbox.com/u/26288937/cliniccontacts.json', function(data) {
+			
+			myJsonObj = data;
+
+    		var tableData="";
+    		var contactsListTB = document.getElementById('contactListTB');
+    		var contactsListTBBody = contactsListTB.getElementsByTagName('tbody')[0];
+    		var tableRow;
+    		var tableCell;
+    		
+    		while (contactsListTBBody.childNodes.length > 0) {
+    			contactsListTBBody.removeChild(contactsListTBBody.firstChild);
+    		}
+    		
+    		for (var contactCnt=0; contactCnt<myJsonObj.Contacts.Doctor.length; contactCnt++) {
+    			tableRow = contactsListTBBody.insertRow(0);
+    			tableRow.class = "trow";
+    			tableCell = tableRow.insertCell(0);
+    			tableCell.class = "tcol";
+    			//tableCell.align = "center";
+    			tableCell.innerHTML= "<input name=\"contacts\" type=\"checkbox\" value=\""+myJsonObj.Contacts.Doctor[contactCnt].number+"\" />" + myJsonObj.Contacts.Doctor[contactCnt].name + " (" + myJsonObj.Contacts.Doctor[contactCnt].number + ")";
+    		}
+    		
+    		for (var contactCnt=0; contactCnt<myJsonObj.Contacts.Patient.length; contactCnt++) {
+    			tableRow = contactsListTBBody.insertRow(0);
+    			tableRow.class = "trow";
+    			tableCell = tableRow.insertCell(0);
+    			tableCell.class = "tcol";
+    			//tableCell.align = "center";
+    			tableCell.innerHTML= "<input name=\"contacts\" type=\"checkbox\" value=\""+myJsonObj.Contacts.Patient[contactCnt].number+"\" />" + myJsonObj.Contacts.Patient[contactCnt].name + " (" + myJsonObj.Contacts.Patient[contactCnt].number + ")";
+    		}
+    		
+    		$('#contactlist').show();
+    		$('#btnBack').hide();
+    		$('#callMgmt').hide();
+    		// window.location.href = "contacts.html?title=Contacts" + "&prevPage=callmgmt";
+		});
+	}
+	
+	function sendSignal(param){
+		
+		var tableData="";
+		var contactsListTB = document.getElementById('contactListTB');
+		var contactsListTBBody = contactsListTB.getElementsByTagName('tbody')[0];
+		var tableRow;
+		var tableCell;
+		
+		feature = param;
+		
+		while (contactsListTBBody.childNodes.length > 0) {
+			contactsListTBBody.removeChild(contactsListTBBody.firstChild);
+		}
+		
+		if(masterArray.length > 0){
+			
+			for (var contactCnt=0; contactCnt<masterArray.length; contactCnt++) {
+    			tableRow = contactsListTBBody.insertRow(0);
+    			tableRow.class = "trow";
+    			tableCell = tableRow.insertCell(0);
+    			tableCell.class = "tcol";
+    			//tableCell.align = "center";
+    			tableCell.innerHTML= "<input name=\"contacts\" type=\"checkbox\" value=\""+masterArray[contactCnt].sessionId + "\" />" + masterArray[contactCnt].number + " (" + masterArray[contactCnt].sessionId + ")";
+    		}
+			
+    		$('#contactlist').show();
+    		$('#btnBack').hide();
+    		$('#callMgmt').hide();
+		}
+	}
+	
+	function launchCallMgmt(){
+		$('#contactlist').hide();
+		$('#callMgmt').show();
+		$('#btnBack').show();
+
+		if(feature == 'conf'){
+
+			var numbersList = "";
+			var checkBoxContacts = document.getElementsByName("contacts");
+			for(var isChecked=0;isChecked<checkBoxContacts.length;isChecked++)
+			{
+				// Rip off the symbols & concatanate the numbers selected
+			    if(checkBoxContacts[isChecked].checked){
+			    	var stripSymbols;
+			    	for(var i = 0; i < checkBoxContacts[isChecked].value.length;i++){
+			    		stripSymbols = checkBoxContacts[isChecked].value;
+			    		stripSymbols = stripSymbols.replace('-', '');
+			    		stripSymbols = stripSymbols.replace(' ', '');
+			    		stripSymbols = stripSymbols.replace('(', '');
+			    		stripSymbols = stripSymbols.replace(')', '');
+			    	}
+			    	
+			    	if(0 == document.getElementById('confnumber').value.length){
+		    			numbersList = stripSymbols;
+			    	}else{
+			    		numbersList = document.getElementById('confnumber').value + "," + stripSymbols;
+			    	}
+		    		document.getElementById('confnumber').value = numbersList;
+			    }
+			}
+		}else{
+			
+			var checkBoxContacts = document.getElementsByName("contacts");
+			for(var isChecked=0;isChecked<checkBoxContacts.length;isChecked++)
+			{
+				if(checkBoxContacts[isChecked].checked){
+					CALL_ATT.sendsignal(checkBoxContacts[isChecked].value , onSendSignalSuccess);
+				}
+			}
+		}
+	}
+	
+	function onSendSignalSuccess(responseText){
+		alert("Send Signal Response : " + responseText);
+	}
+	
+	function launchLocalContactList(paramFeature) {
+		
+		feature = paramFeature;
+		var options = new ContactFindOptions();
+        options.filter="";
+        options.multiple=true;
+        var fields = ["displayName","phoneNumbers"];
+        navigator.contacts.find(fields, onSuccessCont, onErrorCont, options);
+	}
+	
+	function onSuccessCont(contacts) {
+        
+        var tableData="";
+		var contactsListTB = document.getElementById('contactListTB');
+		var contactsListTBBody = contactsListTB.getElementsByTagName('tbody')[0];
+		var tableRow;
+		var tableCell;
+		
+		while (contactsListTBBody.childNodes.length > 0) {
+			contactsListTBBody.removeChild(contactsListTBBody.firstChild);
+		}
+		
+		for (var contactCnt=0; contactCnt < contacts.length; contactCnt++) {
+			tableRow = contactsListTBBody.insertRow(0);
+			tableRow.class = "trow";
+			tableCell = tableRow.insertCell(0);
+			tableCell.class = "tcol";
+			
+			if(null != contacts[contactCnt].phoneNumbers[0] && contacts[contactCnt].phoneNumbers[0].value && contacts[contactCnt].displayName)
+				tableCell.innerHTML= "<input name=\"contacts\" type=\"checkbox\" value=\"" + contacts[contactCnt].phoneNumbers[0].value + "\" />" + contacts[contactCnt].displayName + " (" + contacts[contactCnt].phoneNumbers[0].value + ")";
+		}
+
+		$('#contactlist').show();
+		$('#btnBack').hide();
+		$('#callMgmt').hide();
+    }
+
+    // onError: Failed to get the contacts
+    //
+    function onErrorCont(contactError) {
+        alert('onError!');
+    }
+	
+	function conference() {
+		
+		console.log('conference Button Clicked');
+		
+		var nCnt, AddString;
+		
+		var	textffield = document.getElementById("confnumber");
+		var	msisdn1 = $("#confnumber").val();
+		
+		addArr = addArr + (msisdn1.split(","));
+		
+		//var textffield = document.getElementById("number");
+		
+		// Comma Seperated Values
+		if (textffield.value.length > 0) {
+			var msisdn1 = $("#confnumber").val();
+			addArr = (msisdn1.split(","));
+		}
+		
+		for(nCnt = 0; nCnt < addArr.length && 0 < addArr[nCnt].length; nCnt++){
+			
+			masterArray[nCnt] = new Object();
+			masterArray[nCnt] = {number:addArr[nCnt], sessionID:""};
+			CALL_ATT.conference(addArr[nCnt], onConferenceSuccess);
+		}
+	}
+	
+	function onConferenceSuccess(data) {
+		
+		var id = JSON.parse(data).id;
+		masterArray[(masterArray.length)-1].sessionId = id;
+	}
+
+</script>
+</head>
+<body>
+	<div class="header">
+		<span class="backbutton" id="btnBack"><span class="innerText"
+			onclick="document.location.href='callmgmt.html'">Back</span></span> <span
+			class="headerTitle" style="margin-left: 35%;">Conference</span>
+	</div>
+	<div class="body" align="center">
+		<div id="contactlist" style="display: none">
+			<table class="table" id="contactListTB" style="width: 75%;" align="center">
+				<thead>
+					<tr class="trow">
+						<th class="tcol">
+							<b><u>Contact List</u></b>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				<tfoot>
+					<tr class="trow">
+						<td class="tcol" align="center">
+							<button type="button" onclick="launchCallMgmt();" style="width:100px;">OK</button>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div id="callMgmt">
+			<table class="table">
+				<tr class="trow">
+					<td class="tcol"><span style="float: left; text-align:center; padding-bottom: 10px"></span></td>
+				</tr>
+				<tr class="trow">
+					<td class="tcol"><input class="inputnormal" type="text" style="margin: 5px"
+						id="confnumber" placeholder="Enter the number/Select contacts to Conf" ></td>
+				</tr>
+				<tr class="trow">
+					<td class="tcol"><button type="button" class="submit" style="margin: 5px; float: left; width:150px;"
+							onclick="launchContactList('conf');">Server Contacts</button>
+					<button type="button" class="submit" style="margin: 5px; float: right; width:150px;"
+							onclick="launchLocalContactList('conf');">Phone Contacts</button></td>
+				</tr>
+				<tr class="trow">
+						<td class="tcol"><button type="button" class="submit" style="margin: 5px; float:left; width:314px;"
+							onclick="conference();">Conference</button></td>
+				</tr>
+				<tr class="trow">
+						<td class="tcol"><button type="button" class="submit" style="margin: 5px; float:left; width:314px;"
+							id="btnSendSignal" onclick="sendSignal('sendSignal');">Signal</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
