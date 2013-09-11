@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'ATTiOSPhonegapPlugin' target in the 'ATTiOSPhonegapPlugin' project
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import "ATTPluginContant.h"
-    #import "ATTiOSPhonegapPlugin.h"
-#endif
