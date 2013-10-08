@@ -458,7 +458,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rsync -pvtrlL --cvs-exclude \\\n$PROJECT_DIR/../www* \\\n$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH";
+			shellScript = "rsync -pvtrlL --cvs-exclude \\\n$PROJECT_DIR/www \\\n$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH";
 		};
 /* End PBXShellScriptBuildPhase section */
 
