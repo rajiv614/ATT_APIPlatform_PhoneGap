@@ -39,12 +39,10 @@
           window.localStorage.setItem("accessKey", "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
           window.localStorage.setItem("secretKey", "XXXXXXXXXXXXXXXX");
           window.localStorage.setItem("shortcode", "XXXXXXXX");
-          window.localStorage.setItem("scopeForAccessToken", "ADS,MMS,PAYMENT,SMS,SPEECH,TTS");
-          window.localStorage.setItem("scopeForOauthToken", "TL,MIM,IMMN");
+          window.localStorage.setItem("scopeForAccessToken", "ADS,MMS,SMS,SPEECH,TTS");
+          window.localStorage.setItem("scopeForOauthToken", "MIM,IMMN");
           window.localStorage.setItem("redirect_url", "http://attdemo.somee.com/Attnotifications/SuccessfulAuthentication.html");
-          window.localStorage.setItem("notification_url", "http://attdemo.somee.com/ATTNotifications/Notification.aspx");
-          window.localStorage.setItem("MerchantPaymentRedirectUrl", "http://attdemo.somee.com/ATTNotifications/PaymentSuccess.aspx");
-          window.localStorage.setItem("merchantID", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+
           window.localStorage.removeItem('access_token');
      }
          function loadHTML(pageName) {
@@ -69,9 +67,9 @@
 		<tr class="row" onclick="loadHTML('mms.html')">
 			<td class="column">MMS</td>
 		</tr>
-		<tr class="row" onclick="loadHTML('location.html')">
+		<!--<tr class="row" onclick="loadHTML('location.html')">
 			<td class="column">Location</td>
-		</tr>
+		</tr>-->
 
 		<tr class="row" onclick="loadHTML('immn.html')">
 			<td class="column">In App Messaging From Mobile Number</td>
@@ -79,9 +77,9 @@
 		<tr class="row" onclick="loadHTML('speech.html')">
 			<td class="column">Speech to Text</td>
 		</tr>
-		<tr class="row" onclick="loadHTML('payment.html')">
+		<!--<tr class="row" onclick="loadHTML('payment.html')">
 			<td class="column">Payment</td>
-		</tr>
+		</tr>-->
 		<!-- <tr class="row" onclick="loadHTML('callmgmt.html')">
 			<td class="column">Call Management</td>
 		</tr> -->
