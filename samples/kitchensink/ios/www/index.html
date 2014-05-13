@@ -39,12 +39,10 @@
           window.localStorage.setItem("accessKey", "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
           window.localStorage.setItem("secretKey", "XXXXXXXXXXXXXXXX");
           window.localStorage.setItem("shortcode", "XXXXXXXX");
-          window.localStorage.setItem("scopeForAccessToken", "ADS,MMS,PAYMENT,SMS,SPEECH,TTS");
-          window.localStorage.setItem("scopeForOauthToken", "TL,MIM,IMMN");
+          window.localStorage.setItem("scopeForAccessToken", "ADS,MMS,SMS,SPEECH,TTS");
+          window.localStorage.setItem("scopeForOauthToken", "MIM,IMMN");
           window.localStorage.setItem("redirect_url", "http://attdemo.somee.com/Attnotifications/SuccessfulAuthentication.html");
-          window.localStorage.setItem("notification_url", "http://attdemo.somee.com/ATTNotifications/Notification.aspx");
-          window.localStorage.setItem("MerchantPaymentRedirectUrl", "http://attdemo.somee.com/ATTNotifications/PaymentSuccess.aspx");
-          window.localStorage.setItem("merchantID", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+        
           window.localStorage.removeItem('access_token');
      }
          function loadHTML(pageName) {
