@@ -1814,7 +1814,7 @@ define('att/main',['require','exports','module','att/ajax','att/util','att/const
 		}));
 	}
 	
-	if(has('IAM')) {
+	if(false) {
 		ATT.addDefinition('InAppMessaging', new RESTfulDefinition({
 			appendUrl: '/myMessages/v2/',
 			headerConfig: { 
@@ -2571,7 +2571,7 @@ define('wrappers/wrapper-1.0',['att/main', 'att/constants', 'att/util'], functio
 		};
 	}
 
-	if(has('IAM')) {
+	if(false) {
 		ATT.InAppMessaging = {
 			'sendMessage': function(params, success, fail) {
 				attBase.InAppMessaging.sendMessage({
