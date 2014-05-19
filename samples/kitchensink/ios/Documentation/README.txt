@@ -9,9 +9,8 @@ To configure the application you have to do following steps:
 	KEY: 'AttPlugin'
 	Value: 'ATTPhonegapHelper'
 5. Expand the 'ExternalHosts' section.
-6. Add the entry 'api.att.com' for AT&T APIs and <payment server domain> for payment API , to make their entry in whitelist.(Alternatively use wild card entry '*').
-7. Set the key'OpenAllWhitelistURLsInWebView' to YES.
-8. Add following configuration settings in index.html in OnDeviceReady() function. --
+6. Set the key'OpenAllWhitelistURLsInWebView' to YES.
+7. Add following configuration settings in index.html in OnDeviceReady() function. --
 
     For any API , set accessKey and secretKey of the application which is registered in AT&T account ---
     window.localStorage.setItem("accessKey", "your access key");
@@ -21,7 +20,7 @@ To configure the application you have to do following steps:
     window.localStorage.setItem("shortcode", "Offline short code "); 
     
     For API's , which uses AccessToken for authorization , set scope for that APIs.
-    APIs -- SMS,MMS,PAYMENT,SPEECH,WAP 
+    APIs -- SMS,MMS,SPEECH,WAP 
     window.localStorage.setItem("scopeForAccessToken", "Names of API which needs AccessToken");
 
     For APIs , which uses OauthToken for authorization,set scope and redirect_url for that APIs.
@@ -32,10 +31,7 @@ To configure the application you have to do following steps:
     window.localStorage.setItem("scopeForOauthToken", "Names of API which needs OauthToken");
     window.localStorage.setItem("redirect_url", "It can be any html page");
 
-    For Payment API , set notificationURL and MerchantPaymentRedirectUrl which is set at payment server.These two url's are used in notification.html and payment.js
-    window.localStorage.setItem("notificationURL", "It can be any .aspx/.java page etc, depends on the language used for payment server");
-    window.localStorage.setItem("MerchantPaymentRedirectUrl", "It can be any .aspx/.java page etc, depends on the language used for payment server");
-
+   
 
 RUN APPLICATION ON SIMULATOR
 ------------------------
