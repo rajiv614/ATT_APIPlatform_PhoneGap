@@ -11,13 +11,13 @@
 
 var phonegap;
 
-// Note: Application Developer should get access key,secret key and merchantID by
+// Note: Application Developer should get access key,secret key by
 // registering on www.developer.att.com website
 // and creating sample Application.
 
 var accessKey = window.localStorage.getItem("accessKey");
 var secretKey = window.localStorage.getItem("secretKey");
-var udid = window.localStorage.getItem("merchantID");
+var udid = "Replace with your own UDID . Must be atleast 30 characters";
 
 /*
  * CALLING ATT Module functions
