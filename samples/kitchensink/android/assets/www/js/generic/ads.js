@@ -53,7 +53,7 @@ define([ "require", "exports", "module", "att" ], function(require, exports,
 	 */
 
 	phonegap = require('att');
-	var scope = 'ADS'; //window.localStorage.getItem("scopeForAccessToken");
+	var scope = window.localStorage.getItem("scopeForAccessToken");
 
 	/*
 	 * grantType can have three values :
