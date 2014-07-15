@@ -14,7 +14,6 @@ AT&T platform APIs:
 • MMS
 • SPEECHTOTEXT
 • IN-APP MESSAGING
-• LOCATION
 • OAUTH
 • TEXTTOSPEECH
 • ADS
@@ -24,19 +23,20 @@ AT&T platform APIs:
 How to Run KitchenSink App on iOS
 ==========================================================
 1. Download ATT_APIPlatform_PhoneGap.
-2. From iOS folder, double click on ATTPgKitchenSink.xcodeproj to open KitchenSink project.
-3. Change the API Keys (accessKey, SecretKey) and Shortcode in www/index.html, which can be obtained by joining the AT&T developer program (http://developer.att.com)
-4. Run the KitchenSink app.
+2. Change the API Keys (accessKey, SecretKey) and Shortcode in www/index.html, which can be obtained by joining the AT&T developer program (http://developer.att.com)
+3. Navigate to the KitchenSink folder in the terminal
+4. Run the KitchenSink App on a device/simulator using the PhoneGap CLI by entering the command 'phonegap local run ios'
 
 ==========================================================
 How to Run KitchenSink App on Android
 ==========================================================
 1. Download ATT_APIPlatform_PhoneGap.
-2. In Eclipse, import android folder from KitchenSink.
-3. Change the API Keys (accessKey, SecretKey) and Shortcode in assets/www/index.html, which can be obtained by joining the AT&T developer program (http://developer.att.com)
-4. Run the KitchenSink app as Android Application.
+2. Change the API Keys (accessKey, SecretKey) and Shortcode in www/index.html, which can be obtained by joining the AT&T developer program (http://developer.att.com)
+3. Navigate to the KitchenSink folder in the terminal
+4. Run the KitchenSink App on a device/simulator using the PhoneGap CLI by entering the command 'phonegap local run android'
 
 ===============Notes=====================
 For complete setup/documentation reference, please refer Installation-Setup-Guide.pdf.
+For information about PhoneGap CLI commands , please refer 
 
 --END--
