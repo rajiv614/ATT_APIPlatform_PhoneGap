@@ -79,7 +79,7 @@
     NSString *returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:returnString];
     [self writeJavascript: [pluginResult toSuccessCallbackString:callBackId]];
-    [returnString release];
+    
 }
 
 - (void) pluginFeature:(id)plugin didFailWithErrorString:(const NSString*)error forRequest:(ATT_REQUEST_TYPE)requestType
