@@ -11,9 +11,9 @@
    ATT Plugin
   </description>
 
-  <license>ATT License</license>
+  <license>MIT 2.0</license>
 
-  <js-module src="ios/js/lib/att.js" name="att">
+  <js-module src="www/att.js" name="att">
       <clobbers target="window.AttPlugin" />
   </js-module>
 
@@ -24,19 +24,19 @@
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
           <feature name="AttPlugin">
-            <param name="ios-package" value="org.att.phonegap.plugin.AttPlugin"/>
+            <param name="ios-package" value="ATTPhonegapHelper"/>
           </feature>
         </config-file>
 
-        <source-file src="ios/nativeplugin/ATTPhonegapHelper.m" />
-        <source-file src="ios/nativeplugin/outputLibrary/libATTiOSPhonegapPlugin.a" framework="true" />
+        <source-file src="src/ios/ATTPhonegapHelper.m" />
+        <source-file src="src/ios/outputLibrary/libATTiOSPhonegapPlugin.a" framework="true" />
 
-        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/ATTPluginHTTPRequest.h" />
-        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/ATTiOSPhonegapPlugin.h"/>
-        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/InAppMessagePlugin.h"/>
-        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/MMSPlugin.h" />
-        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/SpeechPlugin.h" />
-        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/TTSPlugin.h" />
-        <header-file src="ios/nativeplugin/ATTPhonegapHelper.h" />
+        <header-file src="src/ios/outputLibrary/include/ATTiOSPhonegapPlugin/ATTPluginHTTPRequest.h" />
+        <header-file src="src/ios/outputLibrary/include/ATTiOSPhonegapPlugin/ATTiOSPhonegapPlugin.h"/>
+        <header-file src="src/ios/outputLibrary/include/ATTiOSPhonegapPlugin/InAppMessagePlugin.h"/>
+        <header-file src="src/ios/outputLibrary/include/ATTiOSPhonegapPlugin/MMSPlugin.h" />
+        <header-file src="src/ios/outputLibrary/include/ATTiOSPhonegapPlugin/SpeechPlugin.h" />
+        <header-file src="src/ios/outputLibrary/include/ATTiOSPhonegapPlugin/TTSPlugin.h" />
+        <header-file src="src/ios/ATTPhonegapHelper.h" />
     </platform>
 </plugin>
