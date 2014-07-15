@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="org.att.phonegap.plugin.AttPlugin"
+    version="1.0.0">
+
+  <name>AttPlugin</name>
+  <author>ATT</author>
+
+  <description>
+   ATT Plugin
+  </description>
+
+  <license>ATT License</license>
+
+  <js-module src="ios/js/lib/att.js" name="att">
+      <clobbers target="window.AttPlugin" />
+  </js-module>
+
+  <engines>
+      <engine name="cordova" version="&gt;=3.0.0" />
+  </engines>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+          <feature name="AttPlugin">
+            <param name="ios-package" value="org.att.phonegap.plugin.AttPlugin"/>
+          </feature>
+        </config-file>
+
+        <source-file src="ios/nativeplugin/ATTPhonegapHelper.m" />
+        <source-file src="ios/nativeplugin/outputLibrary/libATTiOSPhonegapPlugin.a" framework="true" />
+
+        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/ATTPluginHTTPRequest.h" />
+        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/ATTiOSPhonegapPlugin.h"/>
+        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/InAppMessagePlugin.h"/>
+        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/MMSPlugin.h" />
+        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/SpeechPlugin.h" />
+        <header-file src="ios/nativeplugin/outputLibrary/include/ATTiOSPhonegapPlugin/TTSPlugin.h" />
+        <header-file src="ios/nativeplugin/ATTPhonegapHelper.h" />
+    </platform>
+</plugin>
